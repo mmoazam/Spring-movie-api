@@ -3,10 +3,7 @@ package com.fossilhead.movieApi.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -38,6 +35,7 @@ public class FileServiceImpl implements FileService {
         folder.mkdirs(); // create directory and its parents if not exist
 
         String fileName = file.getOriginalFilename();
+        assert fileName != null;
         String filePath = new File(folder, fileName).getPath();
 
         try (InputStream inputStream = file.getInputStream()) {
@@ -49,6 +47,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public InputStream downloadFile(String path, String fileName) throws FileNotFoundException {
-        return null;
+        String filePath = path + File.separator + fileName;
+
+        return new FileInputStream(filePath);
     }
 }
