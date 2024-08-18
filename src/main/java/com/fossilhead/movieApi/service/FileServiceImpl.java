@@ -15,6 +15,7 @@ public class FileServiceImpl implements FileService {
     public String uploadFile(String path, MultipartFile file) throws IOException {
 
 //        String fileName = file.getOriginalFilename();
+//        System.out.println(fileName);
 //
 //        String filePath = path + File.separator + fileName;
 //
