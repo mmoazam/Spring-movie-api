@@ -2,9 +2,16 @@ package com.fossilhead.movieApi.dto;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class MovieDto {
 
     private Long movieId;
