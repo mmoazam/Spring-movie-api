@@ -12,7 +12,7 @@ public interface MovieService {
 
     MovieDto addMovie(MovieDto movieDto, MultipartFile movieFile) throws IOException;
 
-    MovieDto getMovie(Integer movieId);
+    MovieDto getMovie(Long movieId);
 
     List<MovieDto> getAllMovies();
 }
