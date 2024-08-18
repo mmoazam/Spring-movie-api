@@ -14,24 +14,6 @@ public class FileServiceImpl implements FileService {
     @Override
     public String uploadFile(String path, MultipartFile file) throws IOException {
 
-//        String fileName = file.getOriginalFilename();
-//        System.out.println(fileName);
-//
-//        String filePath = path + File.separator + fileName;
-//
-//        File folder = new File(path);
-//
-//        // create folder if not created
-//        if (!folder.exists()) {
-//            if (!folder.mkdir()) {
-//                throw new IOException("Failed to create directory: " + path);
-//            }
-//        }
-//
-//        Files.copy(file.getInputStream(), Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
-//
-//        return fileName;
-
         File folder = new File(path);
         folder.mkdirs(); // create directory and its parents if not exist
 
