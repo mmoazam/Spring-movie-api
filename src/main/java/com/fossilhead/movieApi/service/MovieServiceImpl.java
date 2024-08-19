@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -90,6 +91,23 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<MovieDto> getAllMovies() {
-        return List.of();
+
+        List<Movie> movieList = movieRepository.findAll();
+        List<MovieDto> movieDtos = new ArrayList<>();
+        for (Movie savedMovie : movieList){
+            String posterUrl = baseUrl + "/file/" + savedMovie.getPoster();
+            MovieDto response = new MovieDto(
+                    savedMovie.getMovieId(),
+                    savedMovie.getTitle(),
+                    savedMovie.getDirector(),
+                    savedMovie.getStudio(),
+                    savedMovie.getMovieCast(),
+                    savedMovie.getReleaseYear(),
+                    savedMovie.getPoster(),
+                    posterUrl
+            );
+            movieDtos.add(response);
+        }
+        return movieDtos;
     }
 }
