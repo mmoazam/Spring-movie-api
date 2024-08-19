@@ -94,7 +94,7 @@ public class MovieServiceImpl implements MovieService {
 
         List<Movie> movieList = movieRepository.findAll();
         List<MovieDto> movieDtos = new ArrayList<>();
-        for (Movie savedMovie : movieList){
+        for (Movie savedMovie : movieList) {
             String posterUrl = baseUrl + "/file/" + savedMovie.getPoster();
             MovieDto response = new MovieDto(
                     savedMovie.getMovieId(),
@@ -109,5 +109,18 @@ public class MovieServiceImpl implements MovieService {
             movieDtos.add(response);
         }
         return movieDtos;
+    }
+
+    @Override
+    public MovieDto updateMovie(Long movieId, MovieDto movieDto, MultipartFile file) throws IOException {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+
+        return null;
+    }
+
+    @Override
+    public String deleteMovie(Long movieId) {
+        return "";
     }
 }
